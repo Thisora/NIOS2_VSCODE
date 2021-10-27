@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Nios2 debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${relativeFileDirname}.elf",
+            "args": [],
+            "preLaunchTask": "Debug NIOS2",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "targetArchitecture": "arm64",
+            "miDebuggerPath": "/home/mathis/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/nios2-elf-gdb",
+            "setupCommands":
+            [
+                {
+                    "text": "target remote localhost:2342"
+                },
+                {
+                    "text":"load ${fileDirname}/${relativeFileDirname}.elf"
+                },
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "break main","ignoreFailures": true
+                }
+               
+            ],
+        }
+    ]
+}

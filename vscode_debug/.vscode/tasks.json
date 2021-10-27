@@ -1,0 +1,58 @@
+{
+    "tasks": [
+        
+        {
+            "type": "cppbuild",
+            "label": "Nios2 Build",
+            "command": "cbuild",
+            "args": [
+                "${fileDirname}",
+                "all",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tâche générée par le débogueur.",
+        },
+        {
+            "type": "shell",
+            "label": "Start GDB server",
+            "command": "startGDBServer",
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                {
+                  "pattern": [
+                    {
+                      "regexp": ".",
+                      "file": 1,
+                      "location": 2,
+                      "message": 3
+                    }
+                  ],
+                  "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": ".",
+                    "endsPattern": ".",
+                  }
+                }
+            ],
+            "detail": "Tâche générée par le débogueur.",
+        },
+        {
+            "type": "shell",
+            "label": "Debug NIOS2",
+            "command": "echo \"Starting Debug\"",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn":["Nios2 Build"]
+        }
+    ],
+    "version": "2.0.0"
+}

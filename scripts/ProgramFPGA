@@ -1,0 +1,8 @@
+old_path=$PATH
+export PATH=$PATH:/home/mathis/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin
+export PATH=$PATH:/home/mathis/intelFPGA_lite/18.1/nios2eds/sdk2/bin
+export PATH=$PATH:/home/mathis/intelFPGA_lite/18.1/nios2eds/bin
+
+nios2-configure-sof $1 
+
+export PATH=$old_path
