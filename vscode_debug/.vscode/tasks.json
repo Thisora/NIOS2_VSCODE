@@ -16,7 +16,7 @@
             "detail": "Tâche générée par le débogueur.",
         },
         {
-            "type": "shell",
+            "type": "process",
             "label": "Start GDB server",
             "command": "startGDBServer",
             "isBackground": true,
@@ -51,7 +51,13 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn":["Nios2 Build"]
+            "dependsOn":["Nios2 Build", "Start GDB server"]
+        },
+        {
+            "type": "shell",
+            "label": "terminal",
+            "command": "exec nios2-terminal",  // <-- your shell here
+            
         }
     ],
     "version": "2.0.0"
