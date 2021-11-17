@@ -11,7 +11,6 @@ export PATH=$PATH:$NIOS2_DIR/bin
 BSP_NAME="$1_bsp"
 APP_NAME=$1
 BSP_DIR=../$BSP_NAME
-TEMPLATE_NAME="hello_world"
 QUARTUS_PROJECT_DIR=$(find "$(cd ..; pwd)" -maxdepth 4 -name *.qpf | sed -r 's|/[^/]+$||' |sort -u)
 echo "--Welcome to my super BSP Generator --"
 echo "Searching for your Quartus Project ..."
@@ -41,6 +40,9 @@ cd $BSP_NAME
 nios2-bsp hal . $QUARTUS_PROJECT_DIR --cpu-name nios2_gen2_0
 make
 
+if [ $2="-e" ]; then
+    nios2-bsp-editor --settings settings.bsp
+fi
 # --Generating App using template
 cd ../$APP_NAME
 
